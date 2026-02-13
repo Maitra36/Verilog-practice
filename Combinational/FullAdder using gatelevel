@@ -1,1 +1,19 @@
+/*
+Full Adder - Gate Level Modelling
 
+This module implements a 1-bit full adder using basic logic gates.
+The design follows gate-level modelling by using inbuilt Verilog
+keywords such as 'and', 'or', and 'xor' to describe the logic operations.
+*/
+
+module fulladder(c, a, b, sum, co); 
+input c, a, b; 
+output sum, co; 
+wire z1, z2, z3, z4; 
+and and1(z1,a,b); 
+and and2(z2,b,c); 
+and and3(z3,a,c); 
+or or1(co,z1,z2,z3); 
+xor xor1(z4,a,b); 
+xor xor2(sum,z4,c); 
+endmodule
