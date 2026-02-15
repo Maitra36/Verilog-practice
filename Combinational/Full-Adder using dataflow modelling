@@ -1,0 +1,35 @@
+/* 
+This project implements a 1-bit Full Adder and verifies its functionality using a dedicated testbench. 
+The design is written using dataflow modeling, where the outputs are directly assigned using Boolean expressions.
+
+Compared to gate-level modeling, this approach provides a clearer and more compact representation of combinational logic.
+*/
+
+
+module fa( a,b,c,sum,carry);
+  input a,b,c;
+  output sum,carry;
+  assign sum=a^b^c;
+  assign carry=(a&b) | (b &c) | (c & a); 
+endmodule
+
+Testbench 
+module fulladdtb;
+  reg a,b,c;
+  wire sum,carry;
+  integer i;
+  fa dut( .a(a), .b(b), .c(c), .sum(sum), .carry(carry));
+  initial
+  begin
+    $monitor("a=%b b=%b c=%b | sum=%b carry=%b", a,b,c,sum,carry);
+  end
+ initial
+  begin
+    for(i=0;i<8;i=i+1)
+    begin
+    {a,b,c}=i;
+    #10;
+    //$display("a=%b b=%b c=%b | sum=%b carry=%b", a,b,c,sum,carry);
+  end
+end
+endmodule
