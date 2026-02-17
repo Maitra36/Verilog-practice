@@ -1,0 +1,24 @@
+module HW(S,A,B,O);
+input S,A,B;
+output O;
+assign O =(S&A)|(~S&B);
+endmodule 
+
+Testbench
+module Test;
+reg A,B,S;
+wire O;
+integer i;
+HW m(.A(A),.B(B),.S(S),.O(O));
+initial begin 
+$monitor("A=%b,B=%b,S=%b,O=%b",A,B,S,O);
+end
+initial begin
+for(i=0;i<8;i=i+1)
+begin
+{A,B,S}=i;
+#20;
+end
+end
+endmodule
+
