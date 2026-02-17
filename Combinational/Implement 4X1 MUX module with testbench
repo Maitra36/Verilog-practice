@@ -1,0 +1,24 @@
+module MUX(S,A,B,C,D,P,O);
+input S,A,B,P,D,C;
+output O;
+assign O =(~S&A&~P)|(~S&B&P)|(C&~P&S)|(D&P&S);
+endmodule 
+
+module Test;
+reg A,B,S,C,D,P;
+wire O;
+integer i;
+HW m(.A(A),.B(B),.C(C),.D(D),.S(S),.P(P),.O(O));
+
+initial begin
+for(i=0;i<64;i=i+1)
+begin
+{A,B,C,D,S,P}=i;
+#10;
+ $display("A=%b B=%b C=%b D=%b S=%b P=%b O=%b",
+              A,B,C,D,S,P,O);
+end
+$finish;
+end
+endmodule
+
