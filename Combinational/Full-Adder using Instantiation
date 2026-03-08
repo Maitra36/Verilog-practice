@@ -1,0 +1,15 @@
+module FA(
+input a,b,c,
+output sum,Carry);
+wire w1,w2,w3;
+HA1 m1(a,b,w1,w2);
+HA1 m2(w1,c,sum,w3);
+assign Carry=w3+w2;
+endmodule
+
+module HA1(
+input A,B,
+output S,C);
+assign C=A&B;
+assign S=A^B;
+endmodule
