@@ -1,0 +1,14 @@
+module MUX4(A,B,C,D,S0,S1,O);
+input A,B,C,D,S1,S0;
+output O;
+wire W1,W2;
+MUX2 l(A,B,S0,W1);
+MUX2 m(C,D,S0,W2);
+MUX2 n(W1,W2,S1,O);
+endmodule
+
+module MUX2(a,b,s,o);
+input a,b,s;
+output o;
+assign o=(a&~s)+ (b&s);
+endmodule 
