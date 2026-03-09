@@ -1,0 +1,14 @@
+module Decoder(
+input i,s0,s1,s2,
+output a,b,c,d,e,f,g,h);
+
+assign a = s2 ? 0 : (s1 ? 0 : (s0 ? 0 : i));
+assign b = s2 ? 0 : (s1 ? 0 : (s0 ? i : 0));
+assign c = s2 ? 0 : (s1 ? (s0 ? 0 : i) : 0);
+assign d = s2 ? 0 : (s1 ? (s0 ? i : 0) : 0);
+assign e = s2 ? (s1 ? 0 : (s0 ? 0 : i)) : 0;
+assign f = s2 ? (s1 ? 0 : (s0 ? i : 0)) : 0;
+assign g = s2 ? (s1 ? (s0 ? 0 : i) : 0) : 0;
+assign h = s2 ? (s1 ? (s0 ? i : 0) : 0) : 0;
+
+endmodule
